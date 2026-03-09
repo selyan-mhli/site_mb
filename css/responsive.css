@@ -1,0 +1,310 @@
+/* Mobile First Responsive Design */
+
+/* Extra Small devices (phones, 320px and up) */
+@media (max-width: 479px) {
+    .container {
+        padding: 0 var(--spacing-3);
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .hero-description {
+        font-size: var(--font-size-lg);
+    }
+    
+    .hero-actions {
+        gap: var(--spacing-3);
+    }
+    
+    .btn {
+        padding: var(--spacing-3) var(--spacing-6);
+        font-size: var(--font-size-base);
+    }
+    
+    .property-card,
+    .form-card,
+    .sidebar-card {
+        padding: var(--spacing-6);
+    }
+    
+    .section-header h2 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .section-header p {
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* Small devices (landscape phones, 480px and up) */
+@media (min-width: 480px) and (max-width: 767px) {
+    .hero-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .btn {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .filters {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: var(--spacing-2);
+    }
+    
+    .filter-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .hero {
+        padding: var(--spacing-24) 0 var(--spacing-32) 0;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-5xl);
+    }
+    
+    .hero-description {
+        font-size: var(--font-size-xl);
+    }
+    
+    .property-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-content {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+    
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .form-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+    .hero-title {
+        font-size: var(--font-size-6xl);
+    }
+    
+    .hero-description {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .property-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .advantages-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .contact-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+    
+    .section-header p {
+        font-size: var(--font-size-xl);
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+    
+    .hero-content {
+        max-width: 60rem;
+    }
+    
+    .section-header {
+        margin-bottom: var(--spacing-20);
+    }
+}
+
+/* Ultra wide screens (1400px and up) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Print styles */
+@media print {
+    .header,
+    .footer,
+    .btn,
+    .theme-toggle,
+    .mobile-menu-btn {
+        display: none !important;
+    }
+    
+    .hero {
+        background: none !important;
+        color: black !important;
+    }
+    
+    .page-header {
+        background: none !important;
+        color: black !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+        color: black !important;
+        background: white !important;
+    }
+    
+    .container {
+        max-width: none;
+        padding: 0;
+    }
+    
+    .project-card,
+    .property-card,
+    .advantage-item {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ccc;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .project-card:hover,
+    .property-card:hover,
+    .btn:hover {
+        transform: none !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: #000000;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.8);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.8);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.8);
+    }
+    
+    .btn {
+        border: 2px solid currentColor;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        border: 2px solid var(--text-primary);
+    }
+}
+
+/* Focus styles for accessibility */
+@media (prefers-reduced-motion: no-preference) {
+    .btn:focus-visible,
+    .nav-link:focus-visible,
+    .theme-toggle:focus-visible,
+    .form-group input:focus-visible,
+    .form-group select:focus-visible,
+    .form-group textarea:focus-visible {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+}
+
+/* Dark mode specific responsive adjustments */
+@media (prefers-color-scheme: dark) {
+    .hero::before {
+        background: rgba(0, 0, 0, 0.4);
+    }
+    
+    .project-image::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+    .hero {
+        padding: var(--spacing-12) 0 var(--spacing-16) 0;
+    }
+    
+    .page-header {
+        padding: var(--spacing-8) 0;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .hero-description {
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .theme-toggle,
+    .mobile-menu-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .nav-link {
+        padding: var(--spacing-3);
+    }
+    
+    .project-card:hover,
+    .property-card:hover {
+        transform: none;
+    }
+    
+    .project-card:active,
+    .property-card:active {
+        transform: scale(0.98);
+    }
+}

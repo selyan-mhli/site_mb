@@ -1,0 +1,241 @@
+.hero {
+    background: linear-gradient(135deg, var(--primary-900) 0%, var(--primary-700) 100%);
+    padding: var(--space-12) 0 var(--space-10);
+    color: var(--white);
+}
+
+.back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-6);
+    transition: color var(--duration-fast);
+}
+
+.back:hover {
+    color: var(--white);
+}
+
+.hero h1 {
+    font-size: var(--text-3xl);
+    color: var(--white);
+    margin-bottom: var(--space-4);
+}
+
+@media (min-width: 768px) {
+    .hero h1 {
+        font-size: var(--text-4xl);
+    }
+}
+
+.heroMeta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--text-sm);
+}
+
+.detail {}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    margin-bottom: var(--space-10);
+}
+
+@media (min-width: 768px) {
+    .layout {
+        grid-template-columns: 1.8fr 1fr;
+    }
+}
+
+/* Gallery */
+.gallery {}
+
+.mainImage {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    cursor: zoom-in;
+    margin-bottom: var(--space-4);
+}
+
+.mainImage img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    transition: transform 0.4s var(--ease-out);
+}
+
+.mainImage:hover img {
+    transform: scale(1.02);
+}
+
+.zoomHint {
+    position: absolute;
+    bottom: var(--space-3);
+    right: var(--space-3);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity var(--duration-normal);
+}
+
+.mainImage:hover .zoomHint {
+    opacity: 1;
+}
+
+.thumbs {
+    display: flex;
+    gap: var(--space-2);
+    overflow-x: auto;
+}
+
+.thumb {
+    flex-shrink: 0;
+    width: 80px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 2px solid transparent;
+    opacity: 0.6;
+    transition: all var(--duration-fast);
+    padding: 0;
+}
+
+.thumb:hover {
+    opacity: 0.9;
+}
+
+.thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbActive {
+    border-color: var(--primary-700);
+    opacity: 1;
+}
+
+/* Sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.specsCard,
+.ctaCard {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-card);
+}
+
+.specsCard h3,
+.ctaCard h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-4);
+}
+
+.specsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.specItem {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--neutral-100);
+}
+
+.specItem:last-child {
+    border-bottom: none;
+}
+
+.specItem dt {
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+}
+
+.specItem dd {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--neutral-900);
+}
+
+.ctaCard p {
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+    margin-bottom: var(--space-4);
+}
+
+/* Description */
+.description {
+    max-width: 48rem;
+}
+
+.description h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-4);
+}
+
+.description p {
+    line-height: 1.8;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-8);
+    cursor: zoom-out;
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    cursor: default;
+}
+
+.lightboxClose {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    color: var(--white);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.1);
+    transition: background var(--duration-fast);
+}
+
+.lightboxClose:hover {
+    background: rgba(255, 255, 255, 0.2);
+}

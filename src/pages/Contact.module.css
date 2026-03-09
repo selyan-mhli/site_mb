@@ -1,0 +1,189 @@
+.hero {
+    background: linear-gradient(135deg, var(--primary-900) 0%, var(--primary-700) 100%);
+    padding: var(--space-20) 0 var(--space-16);
+    text-align: center;
+    color: var(--white);
+}
+
+.hero h1 {
+    font-size: var(--text-4xl);
+    color: var(--white);
+    margin-bottom: var(--space-4);
+}
+
+.hero p {
+    font-size: var(--text-lg);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@media (min-width: 768px) {
+    .hero h1 {
+        font-size: var(--text-5xl);
+    }
+}
+
+.contact {}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+    .layout {
+        grid-template-columns: 1.6fr 1fr;
+    }
+}
+
+/* Form card */
+.formCard {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-card);
+}
+
+.formCard h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-6);
+}
+
+.formCard form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+}
+
+@media (min-width: 480px) {
+    .row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.rgpd {
+    margin-top: var(--space-2);
+}
+
+.checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    cursor: pointer;
+}
+
+.checkbox input {
+    margin-top: 3px;
+    accent-color: var(--primary-700);
+}
+
+.checkbox span {
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+    line-height: 1.5;
+}
+
+.checkbox a {
+    color: var(--primary-700);
+    text-decoration: underline;
+}
+
+.errorBanner {
+    background: var(--error-light);
+    color: var(--error);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+}
+
+/* Sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.sidebarCard {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-card);
+}
+
+.sidebarCard h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-4);
+}
+
+.badge48h {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    color: var(--primary-700);
+}
+
+.badge48h strong {
+    display: block;
+    color: var(--neutral-900);
+    margin-bottom: var(--space-1);
+}
+
+.badge48h p {
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+    margin: 0;
+}
+
+.badge48h svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.contactList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.contactList a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+    transition: color var(--duration-fast);
+}
+
+.contactList a:hover {
+    color: var(--primary-700);
+}
+
+.contactList svg {
+    flex-shrink: 0;
+    color: var(--neutral-400);
+}
+
+.zoneList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.zoneList li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--neutral-600);
+}
+
+.zoneList svg {
+    color: var(--success);
+    flex-shrink: 0;
+}

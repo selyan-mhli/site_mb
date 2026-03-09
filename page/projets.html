@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titre de la page -->
+    <title>MB Aménageurs - Projets</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../photo:video/logo.png">
+
+    <!-- Balise de référecenement -->
+    <meta name="description" content="MB Aménageurs rachète vos hangars, bâtiments industriels et locaux commerciaux en région PACA. Réponse garantie sous 48h.">
+    
+    <!-- Balises de police -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Balises de style -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Balises de style des components -->
+    <link rel="stylesheet" href="../css/components.css">
+
+    <!-- Balises de style responsive -->
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+
+                <!-- Logo -->
+                <a href="../index.html" class="logo">
+                    <img src="../photo:video/logo.png" alt="MB Aménageurs" width="32" height="32">
+                    <div class="logo-text">
+                        <h1>MB Aménageurs</h1>
+                    </div>
+                </a>
+
+                <!-- Navigation Desktop -->
+                <nav class="nav-desktop">
+                    <a href="../index.html" class="nav-link">Accueil</a>
+                    <a href="projets.html" class="nav-link active">Projets</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+
+                <!-- Mobile Controls -->
+                <div class="mobile-controls">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav class="nav-mobile" id="mobileNav">
+                <a href="../index.html" class="nav-link">Accueil</a>
+                <a href="projets.html" class="nav-link active">Projets</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Nos Projets Réalisés</h1>
+                <p>Découvrez nos dernières acquisitions. Chaque projet témoigne de notre expertise et de notre réactivité.</p>
+            </div>
+        </section>
+
+        <!-- Filters -->
+        <section class="filters-section">
+            <div class="container">
+                <div class="filters" id="projectFilters">
+                    <button class="filter-btn active" data-filter="tous">Tous</button>
+                    <button class="filter-btn" data-filter="hangar">Hangar</button>
+                    <button class="filter-btn" data-filter="batiment-industriel">Bâtiment industriel</button>
+                    <button class="filter-btn" data-filter="local-commercial">Local commercial</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="projects-section">
+            <div class="container">
+                <div class="projects-grid" id="projectsGrid">
+                    
+                    <!-- Project 1 -->
+                    <article class="project-card" data-type="hangar" data-year="2024" data-location="marseille">
+                        <div class="project-image">
+                            <img src="../photo:video/IMG_5156.jpeg" alt="Entrepôt Logistique Marseille">
+                            <div class="project-type">Hangar</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Entrepôt Logistique Orange</h3>
+                            <p>Acquisition d'un entrepôt</p>
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                    <span>Orange (84)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/>
+                                        <path d="M6 12h4h4"/>
+                                        <path d="M6 20h4h4"/>
+                                    </svg>
+                                    <span>2 500 m²</span>
+                                </div>
+                            </div>
+                            <a href="projet-detail.html?id=1" class="project-link">Voir le projet</a>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card" data-type="batiment-industriel" data-year="2023" data-location="nice">
+                        <div class="project-image">
+                            <img src="https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Complexe Industriel Nice">
+                            <div class="project-type">Bâtiment industriel</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Complexe Industriel Nice</h3>
+                            <p>Rachat d'un complexe de production</p>
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                    <span>Nice (06)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/>
+                                        <path d="M6 12h4h4"/>
+                                        <path d="M6 20h4h4"/>
+                                    </svg>
+                                    <span>4 200 m²</span>
+                                </div>
+                            </div>
+                            <a href="projet-detail.html?id=2" class="project-link">Voir le projet</a>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-card" data-type="local-commercial" data-year="2023" data-location="cannes">
+                        <div class="project-image">
+                            <img src="https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Local Commercial Cannes">
+                            <div class="project-type">Local commercial</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Local Commercial Cannes</h3>
+                            <p>Acquisition d'un local commercial en centre-ville</p>
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                    <span>Cannes (06)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/>
+                                        <path d="M6 12h4h4"/>
+                                        <path d="M6 20h4h4"/>
+                                    </svg>
+                                    <span>350 m²</span>
+                                </div>
+                            </div>
+                            <a href="projet-detail.html?id=3" class="project-link">Voir le projet</a>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- No Results Message -->
+                <div class="no-results" id="noResults" style="display: none;">
+                    <p>Aucun projet trouvé pour ce filtre.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <img src="../photo:video/logo_blanc.png" alt="MB Aménageurs" width="32" height="32">
+                        </div>
+                        <div>
+                            <h3>MB Aménageurs</h3>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Spécialisés dans l'acquisition de hangars, bâtiments industriels et locaux commerciaux 
+                        dans le Vaucluse et les départements limitrophes. 
+                    </p>
+                    
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="../index.html">Accueil</a></li>
+                        <li><a href="./projets.html">Nos Projets</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <a href="tel:+33648069789">06 48 06 97 89</a>
+                        </div>
+                        <div class="contact-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <a href="mailto:contact@mb-amenageurs.fr">contact@mb-amenageurs.fr</a>
+                        </div>
+                        <div class="contact-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <a class="address" href="https://www.google.com/maps?q=541+Av.+Frederic+Mistral+84200+Carpentras" target="_blank" rel="noopener">541 Av. Frederic Mistral 84200 Carpentras</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MB Aménageurs. Tous droits réservés.</p>
+                <div class="footer-links">
+                    <a>Mentions légales</a>
+                    <a>Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/projects.js"></script>
+</body>
+</html>
