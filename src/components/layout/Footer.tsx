@@ -18,6 +18,7 @@ export default function Footer() {
                                 width={32}
                                 height={32}
                                 loading="lazy"
+                                decoding="async"
                             />
                             <span>{companyInfo.name}</span>
                         </Link>

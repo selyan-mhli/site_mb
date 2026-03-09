@@ -17,6 +17,7 @@ export default function ProjectCard({ project }: Props) {
                         width={600}
                         height={400}
                         loading="lazy"
+                        decoding="async"
                     />
                     <span className={styles.typeBadge}>{project.typeLabel}</span>
                 </div>

@@ -1,16 +1,5 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import styles from './Hero.module.css'
-
-const container = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-}
-
-const item = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-}
 
 export default function Hero() {
     return (
@@ -23,35 +12,31 @@ export default function Hero() {
                     height={800}
                     loading="eager"
                     fetchPriority="high"
+                    decoding="async"
                 />
                 <div className={styles.overlay} />
             </div>
 
             <div className="container">
-                <motion.div
-                    className={styles.content}
-                    variants={container}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    <motion.div variants={item} className="badge badge-white">
+                <div className={styles.content}>
+                    <div className="badge badge-white">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                             <circle cx="12" cy="12" r="10" /><polyline points="12,6 12,12 16,14" />
                         </svg>
                         Réponse garantie sous 48h
-                    </motion.div>
+                    </div>
 
-                    <motion.h1 variants={item} className={styles.title}>
+                    <h1 className={styles.title}>
                         Vendez votre bien<br />
                         <span className={styles.accent}>industriel rapidement</span>
-                    </motion.h1>
+                    </h1>
 
-                    <motion.p variants={item} className={styles.desc}>
+                    <p className={styles.desc}>
                         MB Aménageurs rachète vos hangars, bâtiments industriels et locaux
                         commerciaux dans le Vaucluse et les départements limitrophes.
-                    </motion.p>
+                    </p>
 
-                    <motion.div variants={item} className={styles.actions}>
+                    <div className={styles.actions}>
                         <Link to="/contact" className="btn btn-primary btn-lg">
                             Demander une estimation
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -61,8 +46,8 @@ export default function Hero() {
                         <Link to="/realisations" className="btn btn-secondary btn-lg">
                             Nos réalisations
                         </Link>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
             </div>
         </section>
     )

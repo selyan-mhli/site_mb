@@ -1,12 +1,36 @@
 import { useRef, useEffect, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
 import { stats } from '@/data/navigation'
 import styles from './StatsBar.module.css'
+
+function useElementInView(ref: { current: Element | null }) {
+    const [inView, setInView] = useState(false)
+
+    useEffect(() => {
+        const element = ref.current
+        if (!element || inView) return
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setInView(true)
+                    observer.disconnect()
+                }
+            },
+            { rootMargin: '0px 0px -50px 0px' },
+        )
+
+        observer.observe(element)
+
+        return () => observer.disconnect()
+    }, [ref, inView])
+
+    return inView
+}
 
 function AnimatedNumber({ target, suffix }: { target: number; suffix: string }) {
     const [count, setCount] = useState(0)
     const ref = useRef<HTMLSpanElement>(null)
-    const inView = useInView(ref, { once: true, margin: '-50px' })
+    const inView = useElementInView(ref)
 
     useEffect(() => {
         if (!inView) return
@@ -35,19 +59,15 @@ export default function StatsBar() {
             <div className="container">
                 <div className={styles.grid}>
                     {stats.map((stat, i) => (
-                        <motion.div
+                        <div
                             key={i}
                             className={styles.item}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: i * 0.1 }}
                         >
                             <span className={styles.number}>
                                 <AnimatedNumber target={stat.value} suffix={stat.suffix} />
                             </span>
                             <span className={styles.label}>{stat.label}</span>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

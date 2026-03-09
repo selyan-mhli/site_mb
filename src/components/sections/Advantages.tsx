@@ -1,5 +1,4 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import { advantages } from '@/data/navigation'
 import styles from './Advantages.module.css'
 
@@ -16,26 +15,16 @@ export default function Advantages() {
     return (
         <section className={`section section-alt ${styles.section}`}>
             <div className="container">
-                <motion.div
-                    className={styles.header}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                >
+                <div className={styles.header}>
                     <h2>Pourquoi choisir MB Aménageurs ?</h2>
                     <p>Des avantages concrets pour vendre votre bien rapidement et en confiance.</p>
-                </motion.div>
+                </div>
 
                 <div className={styles.grid}>
                     {advantages.map((adv, i) => (
-                        <motion.div
+                        <div
                             key={i}
                             className={styles.item}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: i * 0.08 }}
                         >
                             <div className={styles.icon}>
                                 {icons[adv.icon]}
@@ -44,7 +33,7 @@ export default function Advantages() {
                                 <h3 className={styles.itemTitle}>{adv.title}</h3>
                                 <p className={styles.itemDesc}>{adv.description}</p>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

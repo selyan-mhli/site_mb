@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import styles from './PropertyTypes.module.css'
 
 const types = [
@@ -26,29 +25,19 @@ export default function PropertyTypes() {
     return (
         <section className={`section ${styles.section}`}>
             <div className="container">
-                <motion.div
-                    className={styles.header}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                >
+                <div className={styles.header}>
                     <h2>Types de biens recherchés</h2>
                     <p>Nous nous spécialisons dans l'acquisition de biens immobiliers professionnels.</p>
-                </motion.div>
+                </div>
 
                 <div className={styles.grid}>
                     {types.map((type, i) => (
-                        <motion.div
+                        <div
                             key={i}
                             className={styles.card}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: i * 0.1 }}
                         >
                             <div className={styles.imageWrap}>
-                                <img src={type.image} alt={type.title} width={600} height={400} loading="lazy" />
+                                <img src={type.image} alt={type.title} width={600} height={400} loading="lazy" decoding="async" />
                                 <div className={styles.imageOverlay} />
                             </div>
                             <div className={styles.cardContent}>
@@ -56,7 +45,7 @@ export default function PropertyTypes() {
                                 <h3>{type.title}</h3>
                                 <p>{type.desc}</p>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>
