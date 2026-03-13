@@ -6,15 +6,21 @@ const SITE_NAME = 'MB Aménageurs'
 const DEFAULT_DESCRIPTION = 'MB Aménageurs rachète vos hangars, bâtiments industriels et locaux commerciaux en région PACA. Réponse garantie sous 48h.'
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-default.jpg`
 
+interface BreadcrumbItem {
+    name: string
+    url: string
+}
+
 interface SEOHeadProps {
     title?: string
     description?: string
     canonical?: string
     noindex?: boolean
     ogImage?: string
+    breadcrumbs?: BreadcrumbItem[]
 }
 
-export default function SEOHead({ title, description, canonical, noindex, ogImage }: SEOHeadProps) {
+export default function SEOHead({ title, description, canonical, noindex, ogImage, breadcrumbs }: SEOHeadProps) {
     const { pathname } = useLocation()
     const fullTitle = title
         ? `${title} | ${SITE_NAME}`
@@ -82,6 +88,20 @@ export default function SEOHead({ title, description, canonical, noindex, ogImag
                     'https://www.google.com/maps/search/MB+Aménageurs+Carpentras',
                 ],
             })}</script>
+
+            {/* BreadcrumbList Schema */}
+            {breadcrumbs && breadcrumbs.length > 0 && (
+                <script type="application/ld+json">{JSON.stringify({
+                    '@context': 'https://schema.org',
+                    '@type': 'BreadcrumbList',
+                    itemListElement: breadcrumbs.map((item, i) => ({
+                        '@type': 'ListItem',
+                        position: i + 1,
+                        name: item.name,
+                        item: item.url,
+                    })),
+                })}</script>
+            )}
         </Helmet>
     )
 }

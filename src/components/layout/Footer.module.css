@@ -33,7 +33,7 @@
 }
 
 .desc {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.85);
     font-size: var(--text-sm);
     line-height: 1.7;
     max-width: 28rem;
@@ -51,7 +51,7 @@
 }
 
 .section ul li a {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.85);
     font-size: var(--text-sm);
     transition: color var(--duration-fast);
 }
@@ -70,7 +70,7 @@
     display: flex;
     align-items: center;
     gap: var(--space-3);
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.85);
     font-size: var(--text-sm);
     transition: color var(--duration-fast);
 }
@@ -81,7 +81,7 @@
 
 .contactItem svg {
     flex-shrink: 0;
-    opacity: 0.6;
+    opacity: 0.75;
 }
 
 .bottom {
@@ -102,7 +102,7 @@
 
 .bottom p {
     font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.75);
     margin: 0;
 }
 
@@ -113,7 +113,7 @@
 
 .legal a {
     font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.75);
     transition: color var(--duration-fast);
 }
 

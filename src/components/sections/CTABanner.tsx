@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import styles from './CTABanner.module.css'
 
 export default function CTABanner() {
@@ -17,7 +18,13 @@ export default function CTABanner() {
             </div>
 
             <div className="container">
-                <div className={styles.content}>
+                <motion.div
+                    className={styles.content}
+                    initial={{ opacity: 0, y: 25 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-80px' }}
+                    transition={{ duration: 0.6 }}
+                >
                     <h2>Prêt à vendre votre bien ?</h2>
                     <p>
                         Contactez-nous dès aujourd'hui et recevez une réponse ferme sous 48h.
@@ -29,7 +36,7 @@ export default function CTABanner() {
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
                     </Link>
-                </div>
+                </motion.div>
             </div>
         </section>
     )

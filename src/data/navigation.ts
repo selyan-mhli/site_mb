@@ -1,6 +1,7 @@
 export const navigation = [
     { to: '/', label: 'Accueil' },
     { to: '/realisations', label: 'Réalisations' },
+    { to: '/blog', label: 'Blog' },
     { to: '/contact', label: 'Contact' },
 ]
 

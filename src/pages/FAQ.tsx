@@ -5,19 +5,22 @@ import SEOHead from '@/components/layout/SEOHead'
 import { faqData } from '@/data/navigation'
 import styles from './FAQ.module.css'
 
-function FAQItem({ question, answer, isOpen, onToggle }: {
-    question: string; answer: string; isOpen: boolean; onToggle: () => void
+function FAQItem({ question, answer, isOpen, onToggle, index }: {
+    question: string; answer: string; isOpen: boolean; onToggle: () => void; index: number
 }) {
+    const answerId = `faq-answer-${index}`
     return (
         <div className={`${styles.item} ${isOpen ? styles.open : ''}`}>
-            <button className={styles.question} onClick={onToggle} aria-expanded={isOpen}>
+            <button className={styles.question} onClick={onToggle} aria-expanded={isOpen} aria-controls={answerId}>
                 <span>{question}</span>
                 <svg className={styles.chevron} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6" /></svg>
             </button>
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
+                        id={answerId}
                         className={styles.answer}
+                        role="region"
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
@@ -49,6 +52,10 @@ export default function FAQ() {
             <SEOHead
                 title="Foire aux questions"
                 description="Trouvez les réponses à vos questions sur le rachat de hangars, bâtiments industriels et locaux commerciaux par MB Aménageurs."
+                breadcrumbs={[
+                    { name: 'Accueil', url: 'https://mb-amenageurs.fr/' },
+                    { name: 'FAQ', url: 'https://mb-amenageurs.fr/faq' },
+                ]}
             />
             <Helmet>
                 <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
@@ -84,6 +91,7 @@ export default function FAQ() {
                                     answer={item.answer}
                                     isOpen={openIndex === i}
                                     onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+                                    index={i}
                                 />
                             </motion.div>
                         ))}

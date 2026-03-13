@@ -14,7 +14,7 @@ export default function Footer() {
                         <Link to="/" className={styles.logo}>
                             <img
                                 src="/logo-blanc.webp"
-                                alt=""
+                                alt="Logo MB Aménageurs"
                                 width={32}
                                 height={32}
                                 loading="lazy"
@@ -35,6 +35,7 @@ export default function Footer() {
                             {navigation.map((item) => (
                                 <li key={item.to}><Link to={item.to}>{item.label}</Link></li>
                             ))}
+                            <li><Link to="/blog">Blog</Link></li>
                             <li><Link to="/faq">FAQ</Link></li>
                         </ul>
                     </div>

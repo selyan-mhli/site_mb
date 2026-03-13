@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEOHead from '@/components/layout/SEOHead'
@@ -11,13 +11,35 @@ export default function ProjectDetail() {
     const [activeImage, setActiveImage] = useState(0)
     const [lightboxOpen, setLightboxOpen] = useState(false)
 
+    const handleKeyDown = useCallback((e: KeyboardEvent) => {
+        if (!lightboxOpen || !project) return
+        if (e.key === 'Escape') setLightboxOpen(false)
+        if (e.key === 'ArrowRight') setActiveImage(prev => (prev + 1) % project.gallery.length)
+        if (e.key === 'ArrowLeft') setActiveImage(prev => (prev - 1 + project.gallery.length) % project.gallery.length)
+    }, [lightboxOpen, project])
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown)
+        return () => document.removeEventListener('keydown', handleKeyDown)
+    }, [handleKeyDown])
+
     if (!project) return <Navigate to="/realisations" replace />
+
+    const currentIndex = projects.indexOf(project)
+    const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null
+    const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null
 
     return (
         <>
             <SEOHead
                 title={project.title}
                 description={`${project.description.slice(0, 155)}...`}
+                ogImage={`https://mb-amenageurs.fr${project.cover}`}
+                breadcrumbs={[
+                    { name: 'Accueil', url: 'https://mb-amenageurs.fr/' },
+                    { name: 'Réalisations', url: 'https://mb-amenageurs.fr/realisations' },
+                    { name: project.title, url: `https://mb-amenageurs.fr/realisations/${project.slug}` },
+                ]}
             />
 
             <section className={styles.hero}>
@@ -74,7 +96,7 @@ export default function ProjectDetail() {
                                         onClick={() => setActiveImage(i)}
                                         aria-label={`Vue ${i + 1}`}
                                     >
-                                        <img src={img} alt="" width={120} height={80} loading="lazy" decoding="async" />
+                                        <img src={img} alt={`${project.title} — vue ${i + 1}`} width={120} height={80} loading="lazy" decoding="async" />
                                     </button>
                                 ))}
                             </div>
@@ -102,7 +124,7 @@ export default function ProjectDetail() {
                             <div className={styles.ctaCard}>
                                 <h3>Vous avez un bien similaire ?</h3>
                                 <p>Contactez-nous pour une estimation gratuite et sans engagement.</p>
-                                <Link to="/contact" className="btn btn-primary btn-full">
+                                <Link to={`/contact?type=${project.type}`} className="btn btn-primary btn-full">
                                     Demander une estimation
                                 </Link>
                             </div>
@@ -131,26 +153,70 @@ export default function ProjectDetail() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={() => setLightboxOpen(false)}
+                        role="dialog"
+                        aria-label="Galerie photo"
                     >
+                        <button
+                            className={`${styles.lightboxNav} ${styles.lightboxPrev}`}
+                            onClick={e => { e.stopPropagation(); setActiveImage(prev => (prev - 1 + project.gallery.length) % project.gallery.length) }}
+                            aria-label="Photo précédente"
+                        >
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6" /></svg>
+                        </button>
                         <motion.img
+                            key={activeImage}
                             src={project.gallery[activeImage]}
-                            alt={project.title}
-                            initial={{ scale: 0.9 }}
-                            animate={{ scale: 1 }}
-                            exit={{ scale: 0.9 }}
+                            alt={`${project.title} — vue ${activeImage + 1}`}
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
                             transition={{ duration: 0.3 }}
                             onClick={e => e.stopPropagation()}
                         />
                         <button
+                            className={`${styles.lightboxNav} ${styles.lightboxNext}`}
+                            onClick={e => { e.stopPropagation(); setActiveImage(prev => (prev + 1) % project.gallery.length) }}
+                            aria-label="Photo suivante"
+                        >
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" /></svg>
+                        </button>
+                        <button
                             className={styles.lightboxClose}
                             onClick={() => setLightboxOpen(false)}
-                            aria-label="Fermer"
+                            aria-label="Fermer la galerie"
                         >
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
                         </button>
+                        <div className={styles.lightboxCounter}>{activeImage + 1} / {project.gallery.length}</div>
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {/* Navigation between projects */}
+            <section className={styles.projectNav}>
+                <div className="container">
+                    <div className={styles.projectNavGrid}>
+                        {prevProject ? (
+                            <Link to={`/realisations/${prevProject.slug}`} className={styles.projectNavLink}>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
+                                <div>
+                                    <span className={styles.projectNavLabel}>Projet précédent</span>
+                                    <span className={styles.projectNavTitle}>{prevProject.title}</span>
+                                </div>
+                            </Link>
+                        ) : <div />}
+                        {nextProject ? (
+                            <Link to={`/realisations/${nextProject.slug}`} className={`${styles.projectNavLink} ${styles.projectNavRight}`}>
+                                <div>
+                                    <span className={styles.projectNavLabel}>Projet suivant</span>
+                                    <span className={styles.projectNavTitle}>{nextProject.title}</span>
+                                </div>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                            </Link>
+                        ) : <div />}
+                    </div>
+                </div>
+            </section>
         </>
     )
 }

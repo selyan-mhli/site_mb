@@ -6,7 +6,7 @@ import styles from './ThankYou.module.css'
 export default function ThankYou() {
     return (
         <>
-            <SEOHead title="Merci" noindex />
+            <SEOHead title="Merci" description="Votre demande a bien été envoyée. MB Aménageurs vous recontactera sous 48h." noindex />
 
             <section className={styles.page}>
                 <div className="container">

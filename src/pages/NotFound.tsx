@@ -8,6 +8,7 @@ export default function NotFound() {
         <>
             <SEOHead
                 title="Page introuvable"
+                description="La page que vous cherchez n'existe pas ou a été déplacée. Retournez à l'accueil de MB Aménageurs."
                 noindex={true}
             />
             <section className={styles.page}>

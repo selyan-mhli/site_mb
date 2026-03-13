@@ -320,7 +320,15 @@ p:last-child {
 }
 
 .form-input::placeholder {
-  color: var(--neutral-400);
+  color: var(--neutral-500);
+}
+
+.form-input[aria-invalid="true"] {
+  border-color: var(--error);
+}
+
+.form-input[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
 }
 
 .form-error {

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -26,9 +26,13 @@ export default function Contact() {
     const [submitting, setSubmitting] = useState(false)
     const [submitError, setSubmitError] = useState('')
     const navigate = useNavigate()
+    const [searchParams] = useSearchParams()
 
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
         resolver: zodResolver(schema),
+        defaultValues: {
+            propertyType: searchParams.get('type') || '',
+        },
     })
 
     const onSubmit = async (data: FormData) => {
@@ -64,6 +68,10 @@ export default function Contact() {
             <SEOHead
                 title="Contact"
                 description="Contactez MB Aménageurs pour vendre votre hangar, bâtiment industriel ou local commercial. Estimation gratuite, réponse sous 48h."
+                breadcrumbs={[
+                    { name: 'Accueil', url: 'https://mb-amenageurs.fr/' },
+                    { name: 'Contact', url: 'https://mb-amenageurs.fr/contact' },
+                ]}
             />
 
             <section className={styles.hero}>
@@ -102,33 +110,33 @@ export default function Contact() {
                                 <div className={styles.row}>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="firstName">Prénom *</label>
-                                        <input id="firstName" className="form-input" {...register('firstName')} placeholder="Votre prénom" />
-                                        {errors.firstName && <span className="form-error">{errors.firstName.message}</span>}
+                                        <input id="firstName" className="form-input" {...register('firstName')} placeholder="Votre prénom" aria-invalid={!!errors.firstName} aria-describedby={errors.firstName ? 'firstName-error' : undefined} />
+                                        {errors.firstName && <span id="firstName-error" className="form-error" role="alert">{errors.firstName.message}</span>}
                                     </div>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="lastName">Nom *</label>
-                                        <input id="lastName" className="form-input" {...register('lastName')} placeholder="Votre nom" />
-                                        {errors.lastName && <span className="form-error">{errors.lastName.message}</span>}
+                                        <input id="lastName" className="form-input" {...register('lastName')} placeholder="Votre nom" aria-invalid={!!errors.lastName} aria-describedby={errors.lastName ? 'lastName-error' : undefined} />
+                                        {errors.lastName && <span id="lastName-error" className="form-error" role="alert">{errors.lastName.message}</span>}
                                     </div>
                                 </div>
 
                                 <div className={styles.row}>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="email">Email *</label>
-                                        <input id="email" type="email" className="form-input" {...register('email')} placeholder="votre@email.fr" />
-                                        {errors.email && <span className="form-error">{errors.email.message}</span>}
+                                        <input id="email" type="email" className="form-input" {...register('email')} placeholder="votre@email.fr" aria-invalid={!!errors.email} aria-describedby={errors.email ? 'email-error' : undefined} />
+                                        {errors.email && <span id="email-error" className="form-error" role="alert">{errors.email.message}</span>}
                                     </div>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="phone">Téléphone *</label>
-                                        <input id="phone" type="tel" className="form-input" {...register('phone')} placeholder="06 12 34 56 78" />
-                                        {errors.phone && <span className="form-error">{errors.phone.message}</span>}
+                                        <input id="phone" type="tel" className="form-input" {...register('phone')} placeholder="06 12 34 56 78" aria-invalid={!!errors.phone} aria-describedby={errors.phone ? 'phone-error' : undefined} />
+                                        {errors.phone && <span id="phone-error" className="form-error" role="alert">{errors.phone.message}</span>}
                                     </div>
                                 </div>
 
                                 <div className={styles.row}>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="propertyType">Type de bien *</label>
-                                        <select id="propertyType" className="form-input" {...register('propertyType')}>
+                                        <select id="propertyType" className="form-input" {...register('propertyType')} aria-invalid={!!errors.propertyType} aria-describedby={errors.propertyType ? 'propertyType-error' : undefined}>
                                             <option value="">Sélectionnez...</option>
                                             <option value="hangar">Hangar</option>
                                             <option value="batiment-industriel">Bâtiment industriel</option>
@@ -137,12 +145,12 @@ export default function Contact() {
                                             <option value="atelier">Atelier</option>
                                             <option value="autre">Autre</option>
                                         </select>
-                                        {errors.propertyType && <span className="form-error">{errors.propertyType.message}</span>}
+                                        {errors.propertyType && <span id="propertyType-error" className="form-error" role="alert">{errors.propertyType.message}</span>}
                                     </div>
                                     <div className="form-group">
                                         <label className="form-label" htmlFor="location">Localisation *</label>
-                                        <input id="location" className="form-input" {...register('location')} placeholder="Ville ou département" />
-                                        {errors.location && <span className="form-error">{errors.location.message}</span>}
+                                        <input id="location" className="form-input" {...register('location')} placeholder="Ville ou département" aria-invalid={!!errors.location} aria-describedby={errors.location ? 'location-error' : undefined} />
+                                        {errors.location && <span id="location-error" className="form-error" role="alert">{errors.location.message}</span>}
                                     </div>
                                 </div>
 
@@ -171,11 +179,20 @@ export default function Contact() {
                                 )}
 
                                 <button type="submit" className="btn btn-primary btn-lg btn-full" disabled={submitting}>
-                                    {submitting ? 'Envoi en cours...' : 'Envoyer ma demande'}
-                                    {!submitting && (
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                            <path d="M5 12h14M12 5l7 7-7 7" />
-                                        </svg>
+                                    {submitting ? (
+                                        <>
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={styles.spinner}>
+                                                <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                                            </svg>
+                                            Envoi en cours...
+                                        </>
+                                    ) : (
+                                        <>
+                                            Envoyer ma demande
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                <path d="M5 12h14M12 5l7 7-7 7" />
+                                            </svg>
+                                        </>
                                     )}
                                 </button>
                             </form>

@@ -15,6 +15,10 @@ export default function Projects() {
             <SEOHead
                 title="Réalisations"
                 description="Découvrez l'ensemble de nos acquisitions de hangars, bâtiments industriels et locaux commerciaux en région PACA."
+                breadcrumbs={[
+                    { name: 'Accueil', url: 'https://mb-amenageurs.fr/' },
+                    { name: 'Réalisations', url: 'https://mb-amenageurs.fr/realisations' },
+                ]}
             />
 
             <section className={styles.hero}>

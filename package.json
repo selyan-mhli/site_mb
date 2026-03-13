@@ -12,6 +12,8 @@
     "generate:sitemap": "node scripts/generate-sitemap.mjs"
   },
   "dependencies": {
+    "@fontsource/dm-serif-display": "^5.2.8",
+    "@fontsource/inter": "^5.2.8",
     "@hookform/resolvers": "^3.9.0",
     "framer-motion": "^11.18.0",
     "react": "^19.0.0",
